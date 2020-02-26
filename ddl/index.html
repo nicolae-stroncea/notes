@@ -1,0 +1,886 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Data Definition Language(DDL) - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#data-definition-languageddl" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Data Definition Language(DDL)
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Data Definition Language(DDL)
+      </label>
+    
+    <a href="./" title="Data Definition Language(DDL)" class="md-nav__link md-nav__link--active">
+      Data Definition Language(DDL)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-defined-types" class="md-nav__link">
+    User-defined types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-constraints" class="md-nav__link">
+    Check Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-null-constraints" class="md-nav__link">
+    Not null Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-key" class="md-nav__link">
+    Primary Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    Foreign Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertions" class="md-nav__link">
+    Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers" class="md-nav__link">
+    Triggers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    Process
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction-policies" class="md-nav__link">
+    Reaction Policies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reactions" class="md-nav__link">
+    reactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantics-of-deletion" class="md-nav__link">
+    Semantics of Deletion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-schema-itself" class="md-nav__link">
+    Updating Schema itself
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../relational_algebra/" title="Relational Algebra" class="md-nav__link">
+      Relational Algebra
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sql_dml_1/" title="Data Manipulation Language(DML)" class="md-nav__link">
+      Data Manipulation Language(DML)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-defined-types" class="md-nav__link">
+    User-defined types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-constraints" class="md-nav__link">
+    Check Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-null-constraints" class="md-nav__link">
+    Not null Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-key" class="md-nav__link">
+    Primary Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    Foreign Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertions" class="md-nav__link">
+    Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers" class="md-nav__link">
+    Triggers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    Process
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction-policies" class="md-nav__link">
+    Reaction Policies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reactions" class="md-nav__link">
+    reactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantics-of-deletion" class="md-nav__link">
+    Semantics of Deletion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-schema-itself" class="md-nav__link">
+    Updating Schema itself
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="data-definition-languageddl">Data Definition Language(DDL)</h1>
+<h2 id="types">Types</h2>
+<ul>
+<li>Each column must have a type. List of possible types:<ul>
+<li>Char(n): <strong>fixed-length string</strong> of n characters, padded with blanks if necessary</li>
+<li>Varchar(n): <strong>variable-length</strong> string of up to n characters</li>
+<li>Text: <strong>variable-length, unlimited</strong>. PSQL and other implementations support it, but it's not in SQL standard.</li>
+<li>Int: just integer</li>
+<li>Float: Real number(+/-, decimal places, etc) e.g: <em>1.49, 37.96e2</em></li>
+<li>Boolean e.g: <em>TRUE, FALSE</em></li>
+<li>Time-related:<ul>
+<li><strong>Date</strong>: just the date, no time in hrs, minuts, e.g: ‘2011-09-22’</li>
+<li><strong>Time</strong>: just the time in hrs, minutes, etc, no Date, e.g: '15:00:02.5'</li>
+<li><strong>TimeStamp</strong>: you know both the time + the date, e.g: 'Jan-12-2011 10:25'</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="user-defined-types">User-defined types</h3>
+<ul>
+<li>Can define your own types, where you can <strong>set constraints</strong>:</li>
+</ul>
+<pre><code class="SQL">create domain Grade as int
+    default null
+    check (value &gt;= 0 and value &lt;= 100);
+create domain Campus as varchar(4)
+    default 'StG'
+    check (value in ('StG','UTM','UTSC'));
+</code></pre>
+
+<ul>
+<li><code>domain</code> is a data type with optional constraints</li>
+<li>constraints are checked every time new value is added. </li>
+</ul>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li>Primary key, foreign key, checks, unique, they're all constraints.</li>
+<li>Can give them a name(except for primary key) by adding <code>constraint &lt;&lt;name&gt;&gt;</code> before <code>check (&lt;&lt;condition&gt;&gt;)</code></li>
+</ul>
+<pre><code class="SQL">constraint gradeInRange check (value &gt;= 0);
+constraint validCourseReference foreign key (cNum, dept) references Course;
+</code></pre>
+
+<h3 id="check-constraints">Check Constraints</h3>
+<ul>
+<li>A check constraint is the most generic constraint type. It allows you to specify that the value in a certain column must satisfy a Boolean (truth-value) expression.</li>
+<li>A check constraint is satisfied if the check expression evaluates to true or the null value. Since most expressions will evaluate to the null value if any operand is null, they will not prevent null values in the constrained columns</li>
+<li>Check constraint can check across the column, OR across the entire row(<strong>in PSQL</strong>). It can also check across the entire table(<strong>not in PSQL</strong>).</li>
+</ul>
+<pre><code class="SQL"># this one gives the check a name
+CREATE TABLE products (
+    product_no integer,
+    name text,
+    price numeric CONSTRAINT positive_price CHECK (price &gt; 0)
+);
+# this one does a general check on the row.
+CREATE TABLE products (
+    product_no integer,
+    name text,
+    price numeric CHECK (price &gt; 0),
+    discounted_price numeric CHECK (discounted_price &gt; 0),
+    CHECK (price &gt; discounted_price)
+);
+</code></pre>
+
+<h3 id="not-null-constraints">Not null Constraints</h3>
+<p>A not-null constraint simply specifies that a column must not assume the null value. A syntax example:</p>
+<pre><code class="SQL"># must always be written as column constraint
+CREATE TABLE products (
+    product_no integer NOT NULL,
+    name text NULL,
+    price numeric NOT NULL CHECK (price &gt; 0)
+);
+
+### Unique
+
+* same format as primary key declaration
+* set of attributes form a key(they are unique)
+* 1 value + can be null(or all of them). two null values are never considered equal in this comparison(you can think of NULL as unknown). That means even in the presence of a unique constraint it is possible to store duplicate rows that contain a null value in at least one of the constrained columns. 
+* Can be written as a column constraint or as a tqable constraint.
+* `UNIQUE NOT NULL` has same meaning as `Primary Key` except you can have as manu `unique not null` as you want but you can only have 1 `Primary Key`
+```SQL
+CREATE TABLE products (
+    product_no integer UNIQUE,
+    name text,
+    price numeric
+);
+
+# this specifies that the COMBINATION of prodcut_no and name MUST BE UNIQUE
+CREATE TABLE products (
+    product_no integer,
+    name text,
+    price numeric,
+    UNIQUE (product_no, name)
+);
+</code></pre>
+
+<h3 id="primary-key">Primary Key</h3>
+<ul>
+<li>Set of attributes forms a key(<strong>unique</strong>)<a href="#-userdefined-types">link</a></li>
+<li>Values are<strong>never null</strong>(<mark>each one of the attributes is NOT NULL</mark>)</li>
+<li>Very useful for <strong>optimizations</strong></li>
+</ul>
+<p>Option 1 is if you only have <strong>1 primary key</strong></p>
+<pre><code class="SQL">create table Blah(
+    age1 integer primary key;
+    age2 integer;
+    age3 integer
+);
+</code></pre>
+
+<p>Option 2 is if you want <strong>1+ primary keys</strong>: add pk at the end of table definition(still inside):</p>
+<pre><code class="SQL">create table Blah(
+    age1 integer;
+    age2 integer;
+    age3 integer;
+    primary key (age1, age2);
+)
+</code></pre>
+
+<h3 id="foreign-key">Foreign Key</h3>
+<p><code>foreign key (SID) references Student</code></p>
+<ol>
+<li>Every value of sID in this table <strong>must occur</strong> in Student table</li>
+<li><mark>Must be declared either primary key or unique in Student table</mark></li>
+</ol>
+<p>Has same syntax as unique and Primary Key</p>
+<pre><code class="SQL">create table People (
+SIN integer primary key,
+name text,
+OHIP text unique);
+
+create table Volunteers (
+email text primary key,
+OHIPnum text references People(OHIP));
+age int check (age &gt; 0);
+</code></pre>
+
+<h3 id="assertions">Assertions</h3>
+<ul>
+<li>Assertions can express ross-table constraints: <code>create assertion (name) check (predicate);</code></li>
+<li>Expensive because have to be checked on every database updated</li>
+<li>Assertions are not supported by PostreSQL(or most other DBMS's)</li>
+</ul>
+<h3 id="triggers">Triggers</h3>
+<ul>
+<li>Triggers are compromise between checks AND Assertions<ul>
+<li>They are powerful</li>
+<li>You control the cost by deciding when they are applied.</li>
+</ul>
+</li>
+</ul>
+<h4 id="process">Process</h4>
+<ol>
+<li>Specify type of database even you want to respond to: (after delete on Courses, before update of grade on Took, etc)</li>
+<li>Specify the response: (insert into Winners values (sID)) as a function.</li>
+</ol>
+<p><strong>Creating the function</strong>:</p>
+<pre><code class="SQL">create function RecordWinner() returns trigger
+as
+$$
+begin
+    if new.grade &gt;= 85 then
+        insert into Winners values (new.sid);
+    end if;
+    return new;
+end
+$$
+language plpgsql
+</code></pre>
+
+<p><strong>The trigger</strong>:</p>
+<pre><code class="SQL">create trigger TookUpdate
+before insert on Took #specify the event
+for each row
+execute procedure RecordWinner(); # specify what function you want to u
+</code></pre>
+
+<h3 id="reaction-policies">Reaction Policies</h3>
+<ul>
+<li>Assume table R refers to table S</li>
+<li>You can define "fixes" propagate backwards from S to R. <em>We define them in R because that's the table that will be affected</em></li>
+<li><strong>Cannot</strong> define "fixes" that propagate  forward from R to S.</li>
+</ul>
+<h4 id="events">Events</h4>
+<p>You can react to:</p>
+<ul>
+<li>on delete(when row deleted in S creates <em>dangling</em> reference)</li>
+<li>on update(when an update in S creates <em>dangling</em> reference(i.e maybe one of values of p.k is changed))</li>
+<li>or both: <code>on delete restrict on update cascade</code></li>
+</ul>
+<h4 id="reactions">reactions</h4>
+<ul>
+<li><code>restrict</code>: don't allow the deletion/update in S. Therefore, if I delete a row from S which has a reference in R, DBMS won't let me.W</li>
+<li><code>cascade</code>: make the same deletion/update in the referring tuple. if I delete row from S, also delete all rows from R which reference it.</li>
+<li><code>set null</code>: set <em>corresponding value</em>(not entire tuple!!) in referring tuple to null.</li>
+</ul>
+<h2 id="semantics-of-deletion">Semantics of Deletion</h2>
+<p>Deletion proceeds in 2 stages:</p>
+<ol>
+<li>Marik all tuples for which the WHERE condition is satisfied</li>
+<li>Go back and delete the markwed tuples.</li>
+</ol>
+<h2 id="updating-schema-itself">Updating Schema itself</h2>
+<ul>
+<li>Alter: alter a domain or table</li>
+</ul>
+<pre><code class="SQL">alter table Course
+    add column numSections integer;
+alter table Course
+    drop column breadth;
+</code></pre>
+
+<ul>
+<li>Drop: remove a domain, table, or whole schema</li>
+</ul>
+<pre><code class="SQL">drop table course;
+</code></pre>
+
+<ul>
+<li><code>delete from course</code> removes all referring rows.</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Welcome to MkDocs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Welcome to MkDocs
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../relational_algebra/" title="Relational Algebra" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Relational Algebra
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

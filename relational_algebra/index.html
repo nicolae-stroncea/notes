@@ -1,0 +1,861 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Relational Algebra - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#relational-algebra" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Relational Algebra
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ddl/" title="Data Definition Language(DDL)" class="md-nav__link">
+      Data Definition Language(DDL)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Relational Algebra
+      </label>
+    
+    <a href="./" title="Relational Algebra" class="md-nav__link md-nav__link--active">
+      Relational Algebra
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraining-the-data" class="md-nav__link">
+    Constraining the data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-algebra-basics" class="md-nav__link">
+    Relational Algebra Basics
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-operator-sigma_crsigma_cr-choose-tuples" class="md-nav__link">
+    Select operator \sigma_c(R)\sigma_c(R): choose tuples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-operator-pi_lrpi_lr-choose-columns" class="md-nav__link">
+    Project operator \pi_L(R)\pi_L(R): choose columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cartesian-product-r_1-times-r_2r_1-times-r_2" class="md-nav__link">
+    Cartesian Product R_1 \times R_2R_1 \times R_2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-join-r-bowtie-sr-bowtie-s" class="md-nav__link">
+    Natural Join R \bowtie SR \bowtie S
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-cases" class="md-nav__link">
+    Special cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-natural-join" class="md-nav__link">
+    Problems with Natural Join
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta-join-r-bowtie_condition-sr-bowtie_condition-s" class="md-nav__link">
+    Theta Join R \bowtie_{condition} SR \bowtie_{condition} S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-operator-r-expressionr-expression" class="md-nav__link">
+    Assignment operator R := ExpressionR := Expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rename-operator-rho_r_1r_2rho_r_1r_2" class="md-nav__link">
+    Rename Operator \rho_{R_1}(R_2)\rho_{R_1}(R_2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-operations" class="md-nav__link">
+    Set Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-operators" class="md-nav__link">
+    Summary of Operators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-relational-algebra" class="md-nav__link">
+    Advanced Relational Algebra
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sql_dml_1/" title="Data Manipulation Language(DML)" class="md-nav__link">
+      Data Manipulation Language(DML)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraining-the-data" class="md-nav__link">
+    Constraining the data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-algebra-basics" class="md-nav__link">
+    Relational Algebra Basics
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-operator-sigma_crsigma_cr-choose-tuples" class="md-nav__link">
+    Select operator \sigma_c(R)\sigma_c(R): choose tuples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-operator-pi_lrpi_lr-choose-columns" class="md-nav__link">
+    Project operator \pi_L(R)\pi_L(R): choose columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cartesian-product-r_1-times-r_2r_1-times-r_2" class="md-nav__link">
+    Cartesian Product R_1 \times R_2R_1 \times R_2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-join-r-bowtie-sr-bowtie-s" class="md-nav__link">
+    Natural Join R \bowtie SR \bowtie S
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-cases" class="md-nav__link">
+    Special cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-natural-join" class="md-nav__link">
+    Problems with Natural Join
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta-join-r-bowtie_condition-sr-bowtie_condition-s" class="md-nav__link">
+    Theta Join R \bowtie_{condition} SR \bowtie_{condition} S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-operator-r-expressionr-expression" class="md-nav__link">
+    Assignment operator R := ExpressionR := Expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rename-operator-rho_r_1r_2rho_r_1r_2" class="md-nav__link">
+    Rename Operator \rho_{R_1}(R_2)\rho_{R_1}(R_2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-operations" class="md-nav__link">
+    Set Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-operators" class="md-nav__link">
+    Summary of Operators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-relational-algebra" class="md-nav__link">
+    Advanced Relational Algebra
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="relational-algebra">Relational Algebra</h1>
+<h2 id="definitions">Definitions</h2>
+<p><strong>Relation</strong>: table in SQL</p>
+<p><strong>Schema</strong>: structure of a relation(what columns does it have, what type are they, are there any constraints on its columns). e.g of schema: <strong>Teams</strong>(name, homefield, coach)</p>
+<p><strong>Instance</strong>: particular data in a relation. Instances frequently change, schemas always never.</p>
+<p><strong>Tuple</strong>: 1 row inside the relation. A row can have this format: {Nick, 21, UofT, CS}, where the attributes(<em>see below</em>)  are {surname, age, university, degree}.</p>
+<p><strong>Attribute</strong>: column in SQL. Attribute of a relation. Every Every tuple must have a value for that in RA(relational algebra). This is not necessarily true for SQL.</p>
+<p><strong>Database schema</strong>: a set of relation schemas</p>
+<p><strong>Database instance</strong>: a set of relation instances</p>
+<p><mark>All Relations are <strong>sets</strong></mark><strong>. A relation is a </strong>set** of tuples, which means:</p>
+<ul>
+<li>
+<p>There can be <strong>no duplicate tuples</strong></p>
+</li>
+<li>
+<p>Since it's a set, the <strong>order of the tuples doesn't matter</strong>.</p>
+</li>
+</ul>
+<blockquote>
+<p>SQL is different since there, relations are <strong>bags</strong>(they allow duplicates. this will come later.)</p>
+</blockquote>
+<h2 id="constraining-the-data">Constraining the data</h2>
+<p><strong>Superkeys</strong></p>
+<ul>
+<li>
+<p><strong>Superkey</strong> is a <strong>set</strong> of attributes(1+) that <font color="blue">uniquely identify a tuple in a relation/table</font></p>
+</li>
+<li>
+<p><strong>key</strong> is a <u>minimal</u> superkey. </p>
+</li>
+</ul>
+<p><strong>Foreign keys</strong></p>
+<ul>
+<li>An <u>attribute</u> is a <font color="red">foreign key</font> because it <strong>refers to an attribute that is a key in another table</strong>.</li>
+<li>If a key in another table has multiple attributes, then foreign key must also have attributes(since it must contain all attributes of the primary key).</li>
+<li><span><span class="MathJax_Preview">R_1[X] \subseteq R_2[Y]</span><script type="math/tex">R_1[X] \subseteq R_2[Y]</script></span>, e.g: <span><span class="MathJax_Preview">Roles[mID] \subseteq Movies[mID]</span><script type="math/tex">Roles[mID] \subseteq Movies[mID]</script></span></li>
+<li>X and Y are a list of attributes, <strong>of same arity</strong></li>
+<li>Y must be a key in <span><span class="MathJax_Preview">R_2</span><script type="math/tex">R_2</script></span>: notice that it is a key, not the superkey(we want the minimal set of attributes that uniquely identify a tuple)</li>
+</ul>
+<blockquote>
+<p>Note: <span><span class="MathJax_Preview">R_1[X] \subseteq R_2[Y]</span><script type="math/tex">R_1[X] \subseteq R_2[Y]</script></span> is a foreign key ifff Y is a key for relation <span><span class="MathJax_Preview">R_2</span><script type="math/tex">R_2</script></span>. Otherwise, it's a normal referential integrity constraint, or inclusion dependency. e.g <span><span class="MathJax_Preview">Artists[mID] \subseteq Roles[mID]</span><script type="math/tex">Artists[mID] \subseteq Roles[mID]</script></span> If here mID in Roles is not a key, then we can have multiple mID's in Roles in which case this is not a Foreign key constraint.</p>
+<p><span><span class="MathJax_Preview">R \subseteq S</span><script type="math/tex">R \subseteq S</script></span>  is equivalent to $ R - S = \emptyset$ , which essentially means that there is nothing in R that does not exist in S since (R - S only keeps the things that exist in R that do not exist in S).</p>
+</blockquote>
+<hr />
+<h2 id="relational-algebra-basics">Relational Algebra Basics</h2>
+<p>Assume following schema for our examples:</p>
+<p><strong>Exercise Schema</strong></p>
+<p><strong>Movies</strong>(<u>mID</u>, title, director, year, length)</p>
+<p><strong>Artists</strong>(<u>aID</u>, aName, nationality)</p>
+<p><strong>Roles</strong>(<u>mID, aID, character</u>)</p>
+<blockquote>
+<p>underlined means that it's the key(not the superkey! technically all of the attributes in a row create a superkey here</p>
+</blockquote>
+<p><strong>Foreign key constraints</strong>:</p>
+<ul>
+<li>
+<p><span><span class="MathJax_Preview">Roles[mID] \subseteq Movies[mID]</span><script type="math/tex">Roles[mID] \subseteq Movies[mID]</script></span></p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">Roles[aID] \subseteq Artists[aID]</span><script type="math/tex">Roles[aID] \subseteq Artists[aID]</script></span></p>
+</li>
+</ul>
+<h3 id="select-operator-sigma_crsigma_cr-choose-tuples">Select operator <span><span class="MathJax_Preview">\sigma_c(R)</span><script type="math/tex">\sigma_c(R)</script></span>: choose tuples</h3>
+<ul>
+<li>
+<p><code>R</code> is a table</p>
+</li>
+<li>
+<p><code>c</code> is a boolean expression: <code>alive=true</code></p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> means <strong>Select</strong> and is used to select all tuples from relation R which satisfy boolean expression <code>c</code>.</p>
+</li>
+<li>
+<p><mark>Result is a relation</mark> with same schema as operand, with all attributes from R, but only with tuples which satisfy condition</p>
+</li>
+</ul>
+<h3 id="project-operator-pi_lrpi_lr-choose-columns">Project operator <span><span class="MathJax_Preview">\pi_L(R)</span><script type="math/tex">\pi_L(R)</script></span>: choose columns</h3>
+<ul>
+<li>
+<p><code>R</code> is a table</p>
+</li>
+<li>
+<p><code>L</code> is the subset of attributes of R that you want to see(i.e which columns of your relation do you want to see. )</p>
+</li>
+<li>
+<p><mark>Result is a relation</mark>, with <strong>all tuples from R</strong>, BUT <strong>only the attributes in L</strong>.</p>
+</li>
+</ul>
+<h3 id="cartesian-product-r_1-times-r_2r_1-times-r_2">Cartesian Product <span><span class="MathJax_Preview">R_1 \times R_2</span><script type="math/tex">R_1 \times R_2</script></span></h3>
+<ul>
+<li>
+<p>R1 and R2 are both relations</p>
+</li>
+<li>
+<p><mark>Result is a relation</mark>, with <strong>every single combination</strong> of a tuple from R1 concatenated to a tuple from R2</p>
+</li>
+<li>
+<p>How many tuples are there in <span><span class="MathJax_Preview">R1 \times R2</span><script type="math/tex">R1 \times R2</script></span>? That's $\text{number of rows in R1 } \times \text{ number of tuples/rows in R2}</p>
+</li>
+</ul>
+<blockquote>
+<p>Note: If an attribute occurs in both relations, it is prefixed by the relation name: e.g: Movies.mid, Roles.mid</p>
+</blockquote>
+<p><img alt="UofT CSC343" src="../cartesian_product_eg.png" /></p>
+<p>Cartesian product can be inconvenient. This is because it will generate a lot of rows that do not make sense. <u>We want only the rows where some attributes from relation A match with some attributes from relation B</u>. We call this operation: <strong>Natural Join</strong></p>
+<h3 id="natural-join-r-bowtie-sr-bowtie-s">Natural Join <span><span class="MathJax_Preview">R \bowtie S</span><script type="math/tex">R \bowtie S</script></span></h3>
+<p>Result is defined by:</p>
+<ul>
+<li>
+<p>taking the <strong>Cartesian product</strong></p>
+</li>
+<li>
+<p>selecting to ensure <u>equality</u> on attributes that <u>exist in both relations</u>.</p>
+</li>
+<li>
+<p>projecting to remove duplicate attributes</p>
+</li>
+</ul>
+<p><span><span class="MathJax_Preview">Artists \bowtie Roles</span><script type="math/tex">Artists \bowtie Roles</script></span> only keeps the tuples/rows where the aID is the same in both Roles and Artists(see the schema above). That means each row will represent information about an artist and a role he played, essentially showing all artists along with the roles that they played</p>
+<h4 id="properties">Properties</h4>
+<ol>
+<li>
+<p>Commutative: <span><span class="MathJax_Preview">R \bowtie S = S \bowtie R</span><script type="math/tex">R \bowtie S = S \bowtie R</script></span></p>
+</li>
+<li>
+<p>Associative: <span><span class="MathJax_Preview">R \bowtie (S \bowtie T) = (R \bowtie S) \bowtie T</span><script type="math/tex">R \bowtie (S \bowtie T) = (R \bowtie S) \bowtie T</script></span>, which means that brackets are essentially irrelevant, can just do <span><span class="MathJax_Preview">R \bowtie S \bowtie T</span><script type="math/tex">R \bowtie S \bowtie T</script></span></p>
+</li>
+</ol>
+<h4 id="special-cases">Special cases</h4>
+<ol>
+<li>If <strong>no attributes</strong> in common: resulting relation is <strong>cartesian product of the 2 relations</strong>. 
+   <img alt="" src="../natural_join_case1.png" /></li>
+<li>If <strong>one attribute</strong> in common:  the 2nd column is ommitted from the result(either one of them could be omitted).
+   <img alt="" src="../natural_join_case2.png" /></li>
+<li>Different attribute in common: we need to rename the attribute first to have the same name, and then we're back to case 2.</li>
+<li>No tuples match: if no tuples match, the resulting relation is <strong>empty</strong></li>
+</ol>
+<h4 id="problems-with-natural-join">Problems with Natural Join</h4>
+<ul>
+<li>It can <u>over-match</u> if it chooses to join on some attributes that we don't want(let's say it also joins on A.cake = B.cake, when we actually don't want that), so we lose some control over it.</li>
+<li>It can <u>under-match</u> if we want to join over some attributes that do not have to carry the same name. In that case we first have to rename the attribute, which can be a PITA. </li>
+</ul>
+<p>The solutions to these problems is a Theta Join</p>
+<h3 id="theta-join-r-bowtie_condition-sr-bowtie_condition-s">Theta Join <span><span class="MathJax_Preview">R \bowtie_{condition} S</span><script type="math/tex">R \bowtie_{condition} S</script></span></h3>
+<p>This is <u>syntactic sugar</u> for the following sequence:</p>
+<ol>
+<li>
+<p>Perform Cartesian product(you join every row from R to every row from S creating R x S tuples).</p>
+</li>
+<li>
+<p>Select <span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> the rows which satisfy your condition, and in your condition you specify which attributes pairs you want to match.</p>
+</li>
+</ol>
+<h3 id="assignment-operator-r-expressionr-expression">Assignment operator <span><span class="MathJax_Preview">R := Expression</span><script type="math/tex">R := Expression</script></span></h3>
+<p><u>Alternate notation is <span><span class="MathJax_Preview">R(A_1, A_2,...,A_n):= Expression</span><script type="math/tex">R(A_1, A_2,...,A_n):= Expression</script></span>, </u>where you would rename attributes of Expression to <span><span class="MathJax_Preview">A_1,...,A_n</span><script type="math/tex">A_1,...,A_n</script></span> and give the new relation the name R. <strong>Note</strong>: all of the tuples stay the same, just the attributes change + the relation changes.</p>
+<ul>
+<li>R must be a <em>temporary</em>  variable, you will use it for a future query, it serves no permanent purpose.</li>
+</ul>
+<p>e.g:</p>
+<p><span><span class="MathJax_Preview">CSCOffering := \sigma_{dept = 'csc'}Offering</span><script type="math/tex">CSCOffering := \sigma_{dept = 'csc'}Offering</script></span>
+<span><span class="MathJax_Preview">TookCSC(sid,grade) := \pi_{sid, \; grade} (CSCOffering \bowtie Took)</span><script type="math/tex">TookCSC(sid,grade) := \pi_{sid, \; grade} (CSCOffering \bowtie Took)</script></span>
+<span><span class="MathJax_Preview">PassedCSC(sid) := \pi_{sid} (\sigma_{grade &gt; 50}(TookCSC))</span><script type="math/tex">PassedCSC(sid) := \pi_{sid} (\sigma_{grade > 50}(TookCSC))</script></span></p>
+<h3 id="rename-operator-rho_r_1r_2rho_r_1r_2">Rename Operator <span><span class="MathJax_Preview">\rho_{R_1}(R_2)</span><script type="math/tex">\rho_{R_1}(R_2)</script></span></h3>
+<p>Alternate notation is <span><span class="MathJax_Preview">\rho_{R_1(A_1,...,A_n)} (R_2)</span><script type="math/tex">\rho_{R_1(A_1,...,A_n)} (R_2)</script></span>: lets you rename all the attributes + the relation</p>
+<p><font color="blue">We use <span><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span> when we want to rename <em>within</em> an expression, and <span><span class="MathJax_Preview">R := Expression</span><script type="math/tex">R := Expression</script></span> when we want to create a multi-step query.</font></p>
+<h3 id="set-operations">Set Operations</h3>
+<ul>
+<li>
+<p>Relations are sets, therefore we can use set operations on them: union, interesection, and difference.</p>
+</li>
+<li>
+<p>ONLY IF operands are relations over same attributes(in number of them, name and order)</p>
+</li>
+</ul>
+<p><img alt="set operations" src="../set_operations.png" /></p>
+<h3 id="summary-of-operators">Summary of Operators</h3>
+<p><img alt="operator summary" src="../operator_summary.png" /></p>
+<h2 id="advanced-relational-algebra">Advanced Relational Algebra</h2>
+<p><strong>MAX</strong>(min is analogous):</p>
+<ul>
+<li>
+<p>Find all tuples that <u>are not max</u>. (using select and projects)</p>
+</li>
+<li>
+<p>Subtract from all to find the maxes (using set operations)</p>
+</li>
+</ul>
+<p><strong>k or more</strong>:</p>
+<ul>
+<li>Make all combos of k different tuples that satisfy the condition</li>
+</ul>
+<p><strong>exactly k</strong></p>
+<ul>
+<li>"k or more" - "(k+1) or more"</li>
+</ul>
+<p><strong>every</strong>:</p>
+<ul>
+<li>
+<p>create <em>all</em> combinations that should have occurred.</p>
+</li>
+<li>
+<p>Find combinations that <u>did not occur</u>(by subtracting those that did occur from all possible)</p>
+</li>
+<li>
+<p>all - (failures) = every </p>
+</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../ddl/" title="Data Definition Language(DDL)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Data Definition Language(DDL)
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../schema/" title="Schemas" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Schemas
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
