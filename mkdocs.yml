@@ -1,0 +1,10 @@
+site_name: UofT courses
+theme:
+        name: 'material'
+        palette:
+                primary: 'deep purple'
+markdown_extensions:
+  - pymdownx.arithmatex
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
