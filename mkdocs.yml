@@ -1,10 +1,21 @@
 site_name: UofT courses
+repo_url: https://github.com/nicolae-stroncea/notes
+edit_uri: 'tree/master/docs'
+site-description: 'A list of notes from UofT courses'
 theme:
         name: 'material'
         palette:
                 primary: 'deep purple'
 markdown_extensions:
+  - admonition
+  - codehilite
   - pymdownx.arithmatex
+  - pymdownx.details
+  - pymdownx.tilde
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - markdown.extensions.def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
-
