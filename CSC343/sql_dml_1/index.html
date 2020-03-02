@@ -1,0 +1,1187 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Data Manipulation Language(DML) - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#data-manipulation-languagedml" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Data Manipulation Language(DML)
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      CSC309
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        CSC309
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/" title="Communication and Protocols" class="md-nav__link">
+      Communication and Protocols
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/http/" title="The World Wide Web and HTTP" class="md-nav__link">
+      The World Wide Web and HTTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/lec3/" title="Lec3" class="md-nav__link">
+      Lec3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/midterm_preparation/" title="Midterm Preparation" class="md-nav__link">
+      Midterm Preparation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CSC343
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSC343
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ddl/" title="Data Definition Language(DDL)" class="md-nav__link">
+      Data Definition Language(DDL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../relational_algebra/" title="Relational Algebra" class="md-nav__link">
+      Relational Algebra
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Data Manipulation Language(DML)
+      </label>
+    
+    <a href="./" title="Data Manipulation Language(DML)" class="md-nav__link md-nav__link--active">
+      Data Manipulation Language(DML)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#order-of-execution" class="md-nav__link">
+    Order of Execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-queries" class="md-nav__link">
+    Basic queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregation-and-grouping" class="md-nav__link">
+    Aggregation and Grouping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#union-intersection-and-difference" class="md-nav__link">
+    Union, Intersection and Difference
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlling-duplicate-elimination" class="md-nav__link">
+    Controlling Duplicate Elimination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views" class="md-nav__link">
+    Views
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      CSC369
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        CSC369
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l10_synchronization/" title="Synchronization" class="md-nav__link">
+      Synchronization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l11_locks/" title="Locks" class="md-nav__link">
+      Locks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l12_conditional_variables/" title="Conditional Variables" class="md-nav__link">
+      Conditional Variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l13_semaphores/" title="Semaphores" class="md-nav__link">
+      Semaphores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l14_deadlocks/" title="Deadlock" class="md-nav__link">
+      Deadlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l2_l3_l4_files/" title="Files and File Systems" class="md-nav__link">
+      Files and File Systems
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l5_disks/" title="Disks I/O" class="md-nav__link">
+      Disks I/O
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l6_reliability/" title="Reliability and Write Optimizations" class="md-nav__link">
+      Reliability and Write Optimizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l7_journaling/" title="File System Reliability" class="md-nav__link">
+      File System Reliability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l8_system_call/" title="System Call" class="md-nav__link">
+      System Call
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/l9_threads/" title="Processes and Threads" class="md-nav__link">
+      Processes and Threads
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14">
+    
+    <label class="md-nav__link" for="nav-3-14">
+      Docs nfs284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-14">
+        Docs nfs284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/docs_nfs284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/docs_nfs284/notes/" title="File System Considerations" class="md-nav__link">
+      File System Considerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC369/docs_nfs284/processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      NFS284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        NFS284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/doing_well/" title="To read" class="md-nav__link">
+      To read
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/food_safety/" title="Week 4: Food Safety" class="md-nav__link">
+      Week 4: Food Safety
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/general_lessons/" title="General Lessons" class="md-nav__link">
+      General Lessons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/midterm_prep/" title="Midterm preparation" class="md-nav__link">
+      Midterm preparation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week5_carbohydrates/" title="Week 5: Carbohydrates" class="md-nav__link">
+      Week 5: Carbohydrates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_nutrition_guidelines/" title="Chapter 2: Nutrition Guidelines" class="md-nav__link">
+      Chapter 2: Nutrition Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_readings/" title="Focus on Phytochemicals" class="md-nav__link">
+      Focus on Phytochemicals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_guide/" title="Canada's Food Guide" class="md-nav__link">
+      Canada's Food Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_labels/" title="Food Labels(PP): *How to read and Understand Food labels*" class="md-nav__link">
+      Food Labels(PP): *How to read and Understand Food labels*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_3_nutrition_research/" title="Week 3: Nutrition Reasearch" class="md-nav__link">
+      Week 3: Nutrition Reasearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_4_food_assessment/" title="Week 4: Food Intake Assessment" class="md-nav__link">
+      Week 4: Food Intake Assessment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#order-of-execution" class="md-nav__link">
+    Order of Execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-queries" class="md-nav__link">
+    Basic queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregation-and-grouping" class="md-nav__link">
+    Aggregation and Grouping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#union-intersection-and-difference" class="md-nav__link">
+    Union, Intersection and Difference
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlling-duplicate-elimination" class="md-nav__link">
+    Controlling Duplicate Elimination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views" class="md-nav__link">
+    Views
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/nicolae-stroncea/notes/tree/master/docs/CSC343/sql_dml_1.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="data-manipulation-languagedml">Data Manipulation Language(DML)</h1>
+<blockquote>
+<p>DDL: used for defining schemas
+DML: used for writing queries and modifying databases</p>
+</blockquote>
+<h2 id="order-of-execution">Order of Execution</h2>
+<ol>
+<li><strong>FROM clause &amp; Joins</strong> determine initial table. </li>
+<li><strong>WHERE</strong> <mark>filters rows <strong>individually</strong></mark> according to data FROM 1 row satisfying a condition.</li>
+<li><strong>GROUP BY</strong> combines rows after <em>WHERE</em> <strong>into groups</strong></li>
+<li><strong>Having</strong> filters the groups. Goes through the Groups and just like where filters rows, it filters groups according to each group satisfying a condition.</li>
+<li><strong>ORDER BY</strong> arranges remaining rows/groups</li>
+<li><strong>TOP</strong> only chooses N amount of rows.</li>
+<li><strong>SELECT</strong> selects only the right columns.</li>
+</ol>
+<h2 id="basic-queries">Basic queries</h2>
+<ul>
+<li>Renaming tables:</li>
+</ul>
+<blockquote>
+<p><code class="codehilite"><span class="n">employee</span> <span class="n">e</span></code> renames table employee to e for duration of query</p>
+<div class="codehilite"><pre><span></span><span class="c1">--table e renames table to e.</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+<span class="k">FROM</span> <span class="n">employee</span> <span class="n">e</span><span class="p">,</span> <span class="n">department</span> <span class="n">d</span>
+<span class="k">WHERE</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="err">‘</span><span class="n">marketing</span><span class="err">’</span>
+<span class="k">AND</span> <span class="n">e</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="err">‘</span><span class="n">Horton</span><span class="err">’</span><span class="p">;</span>
+</pre></div>
+
+<ul>
+<li>Renaming attributes:</li>
+</ul>
+<p>Use: <code class="codehilite"><span class="n">attribute</span> <span class="k">AS</span> <span class="n">new_name</span></code></p>
+<div class="codehilite"><pre><span></span><span class="k">select</span> <span class="n">name</span> <span class="k">AS</span> <span class="n">title</span><span class="p">,</span> <span class="n">dept</span> <span class="k">FROM</span> <span class="n">course</span><span class="p">;</span>
+</pre></div>
+
+</blockquote>
+<ul>
+<li>
+<p>Order relations: add as <strong>final clause</strong> <code class="codehilite"><span class="k">ORDER</span> <span class="k">BY</span> <span class="p">(</span><span class="n">attribute_list</span><span class="p">)</span> <span class="p">[</span><span class="k">DESC</span><span class="o">/</span><span class="k">ASC</span><span class="p">]</span></code></p>
+</li>
+<li>
+<p>Ordering can <strong>include expressions</strong>: <code class="codehilite"><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">sales</span><span class="o">+</span><span class="n">rentals</span></code></p>
+</li>
+<li>
+<p>Ordering is last thing done before SELECT, so all attributes are still available.</p>
+</li>
+<li>
+<p>SELECT with expressions:</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span> <span class="n">grade</span><span class="o">+</span><span class="mi">10</span> <span class="k">AS</span> <span class="n">adjusted</span> <span class="k">FROM</span> <span class="n">Took</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">dept</span><span class="o">||</span><span class="n">cnum</span> <span class="k">FROM</span> <span class="n">course</span><span class="p">;</span><span class="c1">--Notice how every value in breadthRequirement column will be &#39;satisfies&#39;</span>
+<span class="k">SELECT</span> <span class="n">dept</span><span class="p">,</span> <span class="s1">&#39;satisfies&#39;</span> <span class="k">AS</span> <span class="n">breadthRequirement</span> <span class="k">FROM</span> <span class="n">Course</span> <span class="k">WHERE</span> <span class="k">breadth</span><span class="p">;</span>
+</pre></div>
+
+<ul>
+<li>Comparing string to a pattern:</li>
+<li>Patterns are: %(means any string, of <strong>0+</strong>length), _(any <strong>single character</strong>)</li>
+<li>Comparisons are done with: <code class="codehilite"><span class="n">attribute</span> <span class="k">LIKE</span> <span class="s1">&#39;%pattern_&#39;</span></code> and attribute NOT LIKE '%pattern_'</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">COURSE</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">&#39;%Comp%&#39;</span><span class="p">;</span>
+</pre></div>
+
+<h2 id="aggregation-and-grouping">Aggregation and Grouping</h2>
+<blockquote>
+<p>These include: SUM, AVG, COUNT, MIN, MAX, which can be applied to a column in a SELECT clause. When they are applied, they will only create 1 ROW, since by default they will take the aggregate function across the entire table.</p>
+</blockquote>
+<ul>
+<li>If we have a SELECT-FROM-WHERE with GROUP BY, tuples are grouped according to values of those attributes AND any aggregation gives us a <strong>single value per group</strong></li>
+<li><strong>SELECT</strong>: Each element of SELECT must be either  an aggregate function(SUM, MAX, MIN, COUN), or an attribute on the GROUP BY list. </li>
+<li><strong>HAVING</strong>: similar to select, HAVING can refer to attributes ONLY IF they're aggregate functions OR attributes of GROUP BY list.</li>
+</ul>
+<h2 id="union-intersection-and-difference">Union, Intersection and Difference</h2>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">subquery</span><span class="p">)</span> <span class="k">UNION</span><span class="o">/</span><span class="k">INTERSECT</span><span class="o">/</span><span class="k">EXCEPT</span><span class="o">/</span><span class="k">UNION</span> <span class="k">ALL</span> <span class="p">(</span><span class="n">subquery</span><span class="p">)</span> <span class="c1">--brackets are mandatory</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">sid</span> <span class="k">FROM</span> <span class="n">Took</span> <span class="k">WHERE</span> <span class="n">grade</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)</span> <span class="k">UNION</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">sid</span> <span class="k">FROM</span> <span class="n">Took</span> <span class="k">WHERE</span> <span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+<p><img alt="" src="/home/nicolae/Winter/CSC343/notes/bag_sets.png" /></p>
+<blockquote>
+<p>Union ALL does not eliminate duplicates, but Union does.</p>
+<p><strong>EXCEPT returns the distinct rows that do not appear in a second result set.</strong>**</p>
+</blockquote>
+<h3 id="controlling-duplicate-elimination">Controlling Duplicate Elimination</h3>
+<ul>
+<li>
+<p>We remove duplicate rows with <strong>SELECT DISTINCT</strong></p>
+</li>
+<li>
+<p>We force to keep duplicates by doing <strong>UNION ALL</strong></p>
+</li>
+</ul>
+<h3 id="views">Views</h3>
+<ul>
+<li>
+<p>A view is a relation(table) defined in terms of stored table(<strong>base tables</strong>) +  other views.</p>
+</li>
+<li>
+<p>You can access a view like a base table.</p>
+</li>
+</ul>
+<p>There are 2 types of views:</p>
+<ol>
+<li>
+<p><strong>Virtual</strong>: no tuples are stored, view is just a query constructed dynamically when needed(from base tables + other views)</p>
+</li>
+<li>
+<p><strong>Materialized</strong>: constructed and stored. Problem is: <font color="red">Expensive to maintain!</font>, because you need to modify memory every time.</p>
+</li>
+</ol>
+<p>Views are used to:</p>
+<ul>
+<li>
+<p><strong>Break down a large query</strong></p>
+</li>
+<li>
+<p>Provide <strong>another way of looking</strong> at the same data</p>
+</li>
+</ul>
+<blockquote>
+<p>View for students who earned an 80 or higher in a CSC course.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">topresults</span> <span class="k">AS</span> <span class="c1">-- this is the main line. The rest is a normal query.</span>
+<span class="k">SELECT</span> <span class="n">firstname</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">cnum</span>
+<span class="k">FROM</span> <span class="n">Student</span><span class="p">,</span> <span class="n">Took</span><span class="p">,</span> <span class="n">Offering</span>
+<span class="k">WHERE</span>
+    <span class="n">Student</span><span class="p">.</span><span class="n">sid</span> <span class="o">=</span> <span class="n">Took</span><span class="p">.</span><span class="n">sid</span> <span class="k">AND</span>
+    <span class="n">Took</span><span class="p">.</span><span class="n">oid</span> <span class="o">=</span> <span class="n">Offering</span><span class="p">.</span><span class="n">oid</span> <span class="k">AND</span>
+    <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="k">AND</span> <span class="n">dept</span> <span class="o">=</span> <span class="s1">&#39;CSC&#39;</span><span class="p">;</span>
+</pre></div>
+
+<blockquote>
+<p>We will only use virtual views. psql only started supporting materialized views recently.</p>
+</blockquote>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../schema/" title="Schemas" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Schemas
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../sql_dml_2/" title="Outer Joins" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Outer Joins
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

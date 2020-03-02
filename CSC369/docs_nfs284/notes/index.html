@@ -1,0 +1,1507 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>File System Considerations - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#file-system-considerations" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                File System Considerations
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      CSC309
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        CSC309
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC309/" title="Communication and Protocols" class="md-nav__link">
+      Communication and Protocols
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC309/http/" title="The World Wide Web and HTTP" class="md-nav__link">
+      The World Wide Web and HTTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC309/lec3/" title="Lec3" class="md-nav__link">
+      Lec3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC309/midterm_preparation/" title="Midterm Preparation" class="md-nav__link">
+      Midterm Preparation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSC343
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSC343
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/ddl/" title="Data Definition Language(DDL)" class="md-nav__link">
+      Data Definition Language(DDL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/relational_algebra/" title="Relational Algebra" class="md-nav__link">
+      Relational Algebra
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/sql_dml_1/" title="Data Manipulation Language(DML)" class="md-nav__link">
+      Data Manipulation Language(DML)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../CSC343/subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      CSC369
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        CSC369
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l10_synchronization/" title="Synchronization" class="md-nav__link">
+      Synchronization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l11_locks/" title="Locks" class="md-nav__link">
+      Locks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l12_conditional_variables/" title="Conditional Variables" class="md-nav__link">
+      Conditional Variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l13_semaphores/" title="Semaphores" class="md-nav__link">
+      Semaphores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l14_deadlocks/" title="Deadlock" class="md-nav__link">
+      Deadlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l2_l3_l4_files/" title="Files and File Systems" class="md-nav__link">
+      Files and File Systems
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l5_disks/" title="Disks I/O" class="md-nav__link">
+      Disks I/O
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l6_reliability/" title="Reliability and Write Optimizations" class="md-nav__link">
+      Reliability and Write Optimizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l7_journaling/" title="File System Reliability" class="md-nav__link">
+      File System Reliability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l8_system_call/" title="System Call" class="md-nav__link">
+      System Call
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../l9_threads/" title="Processes and Threads" class="md-nav__link">
+      Processes and Threads
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14" checked>
+    
+    <label class="md-nav__link" for="nav-3-14">
+      Docs nfs284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-14">
+        Docs nfs284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        File System Considerations
+      </label>
+    
+    <a href="./" title="File System Considerations" class="md-nav__link md-nav__link--active">
+      File System Considerations
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    Data Structures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-inode" class="md-nav__link">
+    The Inode
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-level-inode" class="md-nav__link">
+    Multi-level inode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extent-based-approach" class="md-nav__link">
+    Extent-based approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-based-approach" class="md-nav__link">
+    Link-based approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findings-from-research" class="md-nav__link">
+    Findings from research
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-organization" class="md-nav__link">
+    Directory Organization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storing-directories" class="md-nav__link">
+    Storing directories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free-space-management" class="md-nav__link">
+    Free Space Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-paths-reading-and-writing" class="md-nav__link">
+    Access Paths: Reading and Writing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open" class="md-nav__link">
+    Open
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    Read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    Write
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-creation" class="md-nav__link">
+    File Creation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-for-project" class="md-nav__link">
+    Notes for Project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      NFS284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        NFS284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/doing_well/" title="To read" class="md-nav__link">
+      To read
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/food_safety/" title="Week 4: Food Safety" class="md-nav__link">
+      Week 4: Food Safety
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/general_lessons/" title="General Lessons" class="md-nav__link">
+      General Lessons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/midterm_prep/" title="Midterm preparation" class="md-nav__link">
+      Midterm preparation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week5_carbohydrates/" title="Week 5: Carbohydrates" class="md-nav__link">
+      Week 5: Carbohydrates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_1_nutrition_guidelines/" title="Chapter 2: Nutrition Guidelines" class="md-nav__link">
+      Chapter 2: Nutrition Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_1_readings/" title="Focus on Phytochemicals" class="md-nav__link">
+      Focus on Phytochemicals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_2_food_guide/" title="Canada's Food Guide" class="md-nav__link">
+      Canada's Food Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_2_food_labels/" title="Food Labels(PP): *How to read and Understand Food labels*" class="md-nav__link">
+      Food Labels(PP): *How to read and Understand Food labels*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_3_nutrition_research/" title="Week 3: Nutrition Reasearch" class="md-nav__link">
+      Week 3: Nutrition Reasearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../NFS284/week_4_food_assessment/" title="Week 4: Food Intake Assessment" class="md-nav__link">
+      Week 4: Food Intake Assessment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    Data Structures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-inode" class="md-nav__link">
+    The Inode
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-level-inode" class="md-nav__link">
+    Multi-level inode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extent-based-approach" class="md-nav__link">
+    Extent-based approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-based-approach" class="md-nav__link">
+    Link-based approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findings-from-research" class="md-nav__link">
+    Findings from research
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-organization" class="md-nav__link">
+    Directory Organization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storing-directories" class="md-nav__link">
+    Storing directories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free-space-management" class="md-nav__link">
+    Free Space Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-paths-reading-and-writing" class="md-nav__link">
+    Access Paths: Reading and Writing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open" class="md-nav__link">
+    Open
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    Read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    Write
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-creation" class="md-nav__link">
+    File Creation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-for-project" class="md-nav__link">
+    Notes for Project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/nicolae-stroncea/notes/tree/master/docs/CSC369/docs_nfs284/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="file-system-considerations">File System Considerations</h1>
+<ol>
+<li>Consider data structures to use to keep track of data and metadata.</li>
+<li>How to perform access methods: (open, read, write).
+Consider how to do operations efficiently(open,close,delete,etc.)</li>
+</ol>
+<h2 id="data-structures">Data Structures</h2>
+<ol>
+<li><strong>Blocks</strong>: Space on filesystem divided into blocks of data, typically 4KB.</li>
+<li><strong>Data region</strong>: Region which holds the user data.</li>
+<li><strong>Inodes</strong>: We need to keep track of metadata for each file(size of file,
+owner and access rights, access and modify times, which blocks contain
+the information).</li>
+<li><strong>Inode table</strong>. We store the inodes in an inode table, which we store in blocks, also at the beginning of the file. We can store multiple inodes
+in the same block since an inode is pretty small(128-256 bytes), and
+considering each block typically takes 4Kb(4096 bytes), we can hold about 80 inodes.</li>
+<li><strong>Data and inode bitmaps</strong>: We also need some data structures to keep track of which inodes or data blocks are free or allocated. Each bit indicates whether block/object is free(0) or in-use(1).</li>
+<li><strong>Superblock</strong>: Contains information about the particular filesystem. When mounting a file system, OS will read the superblock first to initialize
+various parameters, and then attach a volume to the file-system tree. Things it tracks are: how many inodes and data
+blocks are in the file system, where the inode table begins, etc.</li>
+</ol>
+<h3 id="the-inode">The Inode</h3>
+<ul>
+<li>Structure that holds metadata for a given file(length, permissions), <strong>AND</strong> the location of the blocks which hold the file.</li>
+<li>Given an i-number(<em>each inode is implicitly referred to a number</em>), you should be able to calculate where on the disk the respective inode is.
+<img alt="inode structure" src="../inode_structure.png" /></li>
+<li>
+<p>Here's how you address a <em>sector</em> of the inode block:</p>
+<div class="codehilite"><pre><span></span><span class="n">blk</span> <span class="o">=</span> <span class="p">(</span><span class="n">inumber</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">inode_t</span><span class="p">))</span> <span class="o">/</span> <span class="n">blockSize</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">sector</span> <span class="o">=</span> <span class="p">((</span><span class="n">blk</span><span class="o">*</span><span class="n">blockSize</span><span class="p">)</span> <span class="o">+</span> <span class="n">inodeStartAddr</span><span class="p">)</span> <span class="o">/</span> <span class="n">sectorSize</span><span class="p">;</span>
+</pre></div>
+
+<ul>
+<li>You have to divide  by blocksize and sectorsize because the disks are
+not byte addressable, rather they consist of a large number of addressable sectors, usually 512 bytes, so you have to divide by the block.</li>
+</ul>
+</li>
+<li>
+<p>The inode itself contains virtually all information you need about the file:</p>
+<ul>
+<li>Type(regular type, directory, etc)</li>
+<li>Size</li>
+<li>Number of blocks allocated to it</li>
+<li>Protection information(who owns the file, who can read, write, execute.)</li>
+<li>Some time information</li>
+</ul>
+</li>
+<li>
+<p>One of the most important decisions is how inode referse to where data blocks are. One simple approach is to have 1 or more direct pointers(<strong>disk addresses</strong>) inside the inode, each pointer refering to one disk block that belongs to a file. </p>
+</li>
+</ul>
+<h4 id="multi-level-inode">Multi-level inode</h4>
+<ul>
+<li>Have both <em>direct pointers</em> and <em>indirect pointers</em>.</li>
+<li><strong>Indirect pointers</strong> refer to blocks that contains more pointers, this massively increases the size your file can have. Consider that a block has 4Kb and a pointer is 4bytes, you can fit 1000 pointers inside one of those blocks.</li>
+<li><mark>You keep using direct pointers until you run out of space. Once you are done with them, stat using indirect pointers and filling up those blocks.</mark></li>
+<li>You can add <em>double indirect pointers</em>, which points to a block that contains <em>indirect pointers</em>, therefore that block can contain 1024 indirect pointers, and since each indirect pointer can contain 1024 direct pointers to blocks, that means you will have 1024 * 1024 = 1,000,000 blocks, i.e 1,000,000 * 4 bytes = 4,000,000 bytes = 4GB.</li>
+<li>If you add <em>triple indirect pointers</em>, you have a block of 1024 double indirect pointers, and since each double indirect pointer can have 1,000,000 blocks, that means your <em>triple indirect pointer</em> contains 1,000,000,000 blocks, i.e 1,000,000,000 * 4 bytes = 4,000,000,000 bytes  = 4TB. </li>
+</ul>
+<h4 id="extent-based-approach">Extent-based approach</h4>
+<ul>
+<li><mark>Use <strong>extents</strong> instead of pointers. An extent is a disk pointer + a length(in blocks), so instead of requiring a pointer for every block of a file, you use a pointer + a length to specify on-disk location of a file.</mark></li>
+<li>Have multiple extents for the same file.</li>
+</ul>
+<h4 id="link-based-approach">Link-based approach</h4>
+<ul>
+<li>Use a <strong>linked list</strong>.Instead of having multiple pointer, have just one,
+which points to the first block of the file. <em>Then add another pointer at
+the end of the data block, and so on</em>.</li>
+<li><strong>Advantages</strong>: supports arbitrarily large files only limited by size of the FS.</li>
+<li><strong>Problems</strong>: performs poorly for some workloads, for example if you need to read the last block of a file, or just doing random access.</li>
+<li><mark>Some systems will have an in-memory table of link information, instead of
+storing the next pointers in the data blocks.</mark>.<ul>
+<li>Table is indexed by address of data block D(so you're at data block D, and then you look inside the table, where the content is the pointer to the next data block.)</li>
+<li>Makes it easy to do random file access(simply scan through in-memory table to find desired block, and access it on disk directly.)</li>
+<li><em>This is the basis of FAT system(file allocation table)</em>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="optimizations">Optimizations</h4>
+<h5 id="findings-from-research">Findings from research</h5>
+<table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Most files are small</td>
+<td>2Kb is most common size</td>
+</tr>
+<tr>
+<td>Average file size is growing</td>
+<td>Almost 200kb is now average</td>
+</tr>
+<tr>
+<td>Most bytes are stored in large files</td>
+<td>Few big files use most space</td>
+</tr>
+<tr>
+<td>File system contains tons of files</td>
+<td>100K on average</td>
+</tr>
+<tr>
+<td>File systems are roughly half full</td>
+<td>50% full on average</td>
+</tr>
+<tr>
+<td>Directories typically small</td>
+<td>Most &lt; 20 entries</td>
+</tr>
+</tbody>
+</table>
+<h2 id="directory-organization">Directory Organization</h2>
+<ul>
+<li>Directory contains: <strong>&lt;file_name, inode number></strong> pairs</li>
+<li>You want to have the following structure</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>inum</th>
+<th>reserved_inode_number</th>
+<th>reclen</th>
+<th>strlen</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>12</td>
+<td>2</td>
+<td>.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>3</td>
+<td>..</td>
+</tr>
+<tr>
+<td>12</td>
+<td>12</td>
+<td>4</td>
+<td>1</td>
+<td>foo</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>inum</em> is the inode number(which you can access as shown previously)</li>
+<li><em>reserved_inode_number</em> keeps track of the number of references to a file. When they become 0(through unlink()), the file is deleted.</li>
+<li><em>reclen(record length)</em> the total bytes for the name + leftover space</li>
+<li><em>strlen</em> is the actual length of the name</li>
+<li><em>name</em> is the actual name of the file.</li>
+</ul>
+<h3 id="storing-directories">Storing directories</h3>
+<ul>
+<li>Storing as a regular file<ul>
+<li>Stored as a special type of file, therefore also has an inode(somewhere in inode table), and the type field inside the inode is marked as "directory" instead of "regular file". </li>
+<li>This makes it simple to store directories. On-disk structure remains unchanged.</li>
+</ul>
+</li>
+<li>Store directories in B-tree form(XFS[S+96])<ul>
+<li>Makes file creations faster(since you can check much faster if a file like that already exists)</li>
+</ul>
+</li>
+</ul>
+<h2 id="free-space-management">Free Space Management</h2>
+<ul>
+<li><mark>File system <strong>must</strong> track which inodes and data blocks are free and which aren't, so it can find space when a file or directory is created/modified</mark>.</li>
+<li><strong>Bitmaps</strong>: If inode bitmap, One bit for every inode, and 1 if occupied, 0 if free. When we create a file, OS searches through bitmap for a free inode, allocates it to the file, then FS marks the inode as used(w. 1 in bitmap). Similarly for the creation of a data block.<ul>
+<li><mark><strong>Optimization with Pre-allocation</strong>: ext2 and ext3 looks for sequence of blocks(for eg. 8) that are free, so when you create a file and it needs data blocks, give it a contiguous portion on the disk, which will improve performance.</mark></li>
+</ul>
+</li>
+<li><strong>Free lists</strong>: single pointer in super block points to first free block on FS. That block then keeps next free pointer, which creates a <em>list</em> of free blocks on the system. </li>
+</ul>
+<h2 id="access-paths-reading-and-writing">Access Paths: Reading and Writing</h2>
+<ul>
+<li>Assume file system is already mounted, and superblock is in memory(everything has been set up already).</li>
+</ul>
+<h3 id="open">Open</h3>
+<p><code class="codehilite"><span class="k">open</span><span class="p">(</span><span class="ss">&quot;/foo/bar&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">)</span></code></p>
+<ul>
+<li>FS first finds the inode for the file bar, to get basic info about the file(permission information, file size, etc). **THerefore, FS must find inode, given full pathname).<ul>
+<li>FS must <strong>traverse</strong> the pathname and and locate the desired inode. I.e it starts at the root directory("/") which it already loaded, and then it traverses to the file through all the directories on its path.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ol>
+<li>Begin traversal at root directory, which FS already knows from the <em>superblock</em>. Additionally, most often root inode number is 2, so FS would begin by reading the block that contains inode number 2.</li>
+<li>Once FS has the directory inode, look through the data blocks, for an entry for the actual file or for the next directory in the path. Once you get it, you can also get its inode, at which point move to the next inode recursively. </li>
+<li>Final step is to read bar's inode into memory, where FS does permission check, allocates a file descriptor for this process in the per-process open-file table, and returns file descriptor to the user.</li>
+</ol>
+<h3 id="read">Read</h3>
+<ul>
+<li>When <code class="codehilite"><span class="k">read</span><span class="p">()</span></code> is called, first read(offset 0, unless lseek() is called), will read from first block of the file.</li>
+<li>read() will further update in-memory open table for file descriptor, updating file offset such that next read is read from 2nd file block, etc.</li>
+<li>Potentially update inode with new last-accessed time</li>
+</ul>
+<h3 id="close">Close</h3>
+<ul>
+<li>Deallocate the file descriptor.</li>
+</ul>
+<h3 id="write">Write</h3>
+<ol>
+<li>First user must call <code class="codehilite"><span class="k">open</span><span class="p">()</span></code>, as described before.</li>
+<li>Then user can call <code class="codehilite"><span class="k">write</span><span class="p">()</span></code>, and update file with new contents. <mark>When writing, each write must first decide which block to allocate to the file, and update structures on the disk accordingly(data bitmap <strong>and</strong> the inode).</mark></li>
+<li>Close the file.</li>
+</ol>
+<blockquote>
+<p>Each write generates 5 I/Os:
+1. Read data bitmap to find out which block to use to add info.
+2. One to write the bitmap(reflext that a previously free block is now busy, OR free)
+3. Read inode to get block location.
+4. Write to inode to update new block location.
+5. Write actual block.</p>
+</blockquote>
+<h4 id="file-creation">File Creation</h4>
+<ul>
+<li>FS must allocate inode + allocate space within directory for new file.</li>
+<li>One read to inode bitmap(find free inode), one write to inode bitmap(initialize it), one write to directory data block (link high-level name of file to inode number), one read and write to directory node to update it.</li>
+<li><em>If directory needs to grow to accomodate new entry</em>, will need additional I/Os.</li>
+</ul>
+<h2 id="notes-for-project">Notes for Project</h2>
+<ul>
+<li>Can use Pre-allocation</li>
+<li>Use bitmaps</li>
+<li>Target system more towards smaller files(which are the most common ones.)</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../" title="Welcome to MkDocs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Welcome to MkDocs
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../processes/" title="Processes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Processes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

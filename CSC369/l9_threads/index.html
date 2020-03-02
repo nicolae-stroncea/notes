@@ -1,0 +1,1279 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Processes and Threads - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#processes-and-threads" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Processes and Threads
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      CSC309
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        CSC309
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/" title="Communication and Protocols" class="md-nav__link">
+      Communication and Protocols
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/http/" title="The World Wide Web and HTTP" class="md-nav__link">
+      The World Wide Web and HTTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/lec3/" title="Lec3" class="md-nav__link">
+      Lec3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/midterm_preparation/" title="Midterm Preparation" class="md-nav__link">
+      Midterm Preparation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSC343
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSC343
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/ddl/" title="Data Definition Language(DDL)" class="md-nav__link">
+      Data Definition Language(DDL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/relational_algebra/" title="Relational Algebra" class="md-nav__link">
+      Relational Algebra
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/sql_dml_1/" title="Data Manipulation Language(DML)" class="md-nav__link">
+      Data Manipulation Language(DML)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      CSC369
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        CSC369
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l10_synchronization/" title="Synchronization" class="md-nav__link">
+      Synchronization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l11_locks/" title="Locks" class="md-nav__link">
+      Locks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l12_conditional_variables/" title="Conditional Variables" class="md-nav__link">
+      Conditional Variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l13_semaphores/" title="Semaphores" class="md-nav__link">
+      Semaphores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l14_deadlocks/" title="Deadlock" class="md-nav__link">
+      Deadlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l2_l3_l4_files/" title="Files and File Systems" class="md-nav__link">
+      Files and File Systems
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l5_disks/" title="Disks I/O" class="md-nav__link">
+      Disks I/O
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l6_reliability/" title="Reliability and Write Optimizations" class="md-nav__link">
+      Reliability and Write Optimizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l7_journaling/" title="File System Reliability" class="md-nav__link">
+      File System Reliability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l8_system_call/" title="System Call" class="md-nav__link">
+      System Call
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Processes and Threads
+      </label>
+    
+    <a href="./" title="Processes and Threads" class="md-nav__link md-nav__link--active">
+      Processes and Threads
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#interprocess-communication" class="md-nav__link">
+    Interprocess Communication
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disadvantages" class="md-nav__link">
+    Disadvantages:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    Threads
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages" class="md-nav__link">
+    Advantages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-level-and-kernel-level-threads" class="md-nav__link">
+    User level and kernel-level threads
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kernel-level-threads" class="md-nav__link">
+    Kernel-Level threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-level-threads" class="md-nav__link">
+    User-Level Threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posix-threads" class="md-nav__link">
+    POSIX Threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14">
+    
+    <label class="md-nav__link" for="nav-3-14">
+      Docs nfs284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-14">
+        Docs nfs284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/notes/" title="File System Considerations" class="md-nav__link">
+      File System Considerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      NFS284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        NFS284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/doing_well/" title="To read" class="md-nav__link">
+      To read
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/food_safety/" title="Week 4: Food Safety" class="md-nav__link">
+      Week 4: Food Safety
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/general_lessons/" title="General Lessons" class="md-nav__link">
+      General Lessons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/midterm_prep/" title="Midterm preparation" class="md-nav__link">
+      Midterm preparation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week5_carbohydrates/" title="Week 5: Carbohydrates" class="md-nav__link">
+      Week 5: Carbohydrates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_nutrition_guidelines/" title="Chapter 2: Nutrition Guidelines" class="md-nav__link">
+      Chapter 2: Nutrition Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_readings/" title="Focus on Phytochemicals" class="md-nav__link">
+      Focus on Phytochemicals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_guide/" title="Canada's Food Guide" class="md-nav__link">
+      Canada's Food Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_labels/" title="Food Labels(PP): *How to read and Understand Food labels*" class="md-nav__link">
+      Food Labels(PP): *How to read and Understand Food labels*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_3_nutrition_research/" title="Week 3: Nutrition Reasearch" class="md-nav__link">
+      Week 3: Nutrition Reasearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_4_food_assessment/" title="Week 4: Food Intake Assessment" class="md-nav__link">
+      Week 4: Food Intake Assessment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#interprocess-communication" class="md-nav__link">
+    Interprocess Communication
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disadvantages" class="md-nav__link">
+    Disadvantages:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    Threads
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages" class="md-nav__link">
+    Advantages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-level-and-kernel-level-threads" class="md-nav__link">
+    User level and kernel-level threads
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kernel-level-threads" class="md-nav__link">
+    Kernel-Level threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-level-threads" class="md-nav__link">
+    User-Level Threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posix-threads" class="md-nav__link">
+    POSIX Threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/nicolae-stroncea/notes/tree/master/docs/CSC369/l9_threads.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="processes-and-threads">Processes and Threads</h1>
+<h2 id="interprocess-communication">Interprocess Communication</h2>
+<p>Processes can communicate with each other through:</p>
+<ul>
+<li>
+<p>signals</p>
+</li>
+<li>
+<p>pipes</p>
+</li>
+<li>
+<p>sockets</p>
+</li>
+<li>
+<p>files</p>
+</li>
+</ul>
+<p>Processes can share memory with each other:</p>
+<ol>
+<li>use shmget()</li>
+<li>
+<p><code class="codehilite"><span class="n">shmget</span><span class="p">()</span></code>: sys call tells OS to allocate <u>shared memory region</u>(sort of like malloc tells OS to allocate mem region in heap)</p>
+</li>
+<li>
+<p><code class="codehilite"><span class="n">shmat</span><span class="p">()</span></code>: maps shared memory to some address. If you choose NULL, OS chooses address for you</p>
+</li>
+<li><code class="codehilite"><span class="n">mmap</span><span class="p">()</span></code>: another approach for creating shared memory region</li>
+</ol>
+<h3 id="disadvantages">Disadvantages:</h3>
+<ul>
+<li>
+<p><em>Space</em>: Need multiple PCB, page tables, etc</p>
+</li>
+<li>
+<p><em>Time</em>: very time-consuming to fork and copy address space, create data structures, etc</p>
+</li>
+<li>
+<p>Inter-process communication: extra work is needed to share and communicate across isolated processes.</p>
+</li>
+</ul>
+<hr />
+<h2 id="threads">Threads</h2>
+<p><strong>Definition</strong>: a thread is a <em>single control flow</em> through a program. A program w. multiple control flows is multithreaded.</p>
+<p>Recall that a process is:</p>
+<ol>
+<li>
+<p>Address space:</p>
+</li>
+<li>
+<p>Code</p>
+</li>
+<li>
+<p>Heap</p>
+</li>
+<li>
+<p>Execution state</p>
+</li>
+<li>
+<p>program counter</p>
+</li>
+<li>
+<p>stack pointer</p>
+</li>
+<li>
+<p>OS resources</p>
+</li>
+<li>
+<p>open file table, etc.</p>
+</li>
+</ol>
+<p>Main idea: <mark>Separate the address space from the execution state.</mark>Then multiple "threads of execution" can share the same address space(same space + access to the heap) but have their independent execution state(their own program coutner and )</p>
+<blockquote>
+<p>Note: All the threads see the same data, otherwise they'd be considered 
+different tasks; if some data can only be accessed by a particular 
+thread, that's usually solely the purview of the programming language, 
+not of the operating system.</p>
+</blockquote>
+<p><strong>This is what threads turn into</strong>:</p>
+<ul>
+<li>
+<p>Address space(<font color="green">shared</font>)):</p>
+</li>
+<li>
+<p>Code(machine code of the program, which means all threads can call the same functions)</p>
+</li>
+<li>
+<p>Heap(can access the same data defined in the heap)</p>
+</li>
+<li>
+<p>Execution state (<font color="red">independent</font>)(each thread has their own)</p>
+</li>
+<li>
+<p>program counter(each thread can be at a different stage in the program)</p>
+</li>
+<li>
+<p>stack pointer(the stack is individual to the current function you're in)</p>
+<ul>
+<li>stack pointer: points to the top of the stack. this is where you push function arguments, as well as return statements and respectively pop them off. Each thread has their own</li>
+</ul>
+</li>
+<li>
+<p>OS resources(<font color="green">shared</font>)</p>
+</li>
+<li>
+<p>open file table, etc.</p>
+</li>
+</ul>
+<p><img alt="address space of threads" src="../threads_address_space.png" /></p>
+<blockquote>
+<p>Everything else threads share. But they have their own SP and PC</p>
+</blockquote>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>
+<p><strong>Sharing</strong>: threads can solve a single problem concurrently and share code, heap, and global variables</p>
+</li>
+<li>
+<p><strong>Lighter weight</strong>: they're faster to create and destroy + faster context switching times</p>
+</li>
+<li>
+<p><strong>Performance gains</strong>: I/O(since one is blocked and the other one moves ahead) + overlapping computation</p>
+</li>
+</ul>
+<h3 id="user-level-and-kernel-level-threads">User level and kernel-level threads</h3>
+<h4 id="kernel-level-threads">Kernel-Level threads</h4>
+<p>Details:</p>
+<ul>
+<li>
+<p>OS schedules all threads in the system</p>
+</li>
+<li>
+<p>All thread operations are implemented in the kernel</p>
+</li>
+<li>
+<p>Kernel deals with context switching</p>
+</li>
+</ul>
+<p>Advantages and Disadvantages:</p>
+<ul>
+<li><strong>Multi-threading is much cheaper than processes</strong>, this is because you don't have to initialize a new address space, new PCB, new OS resources.</li>
+<li><strong>too much overhead compared to user-threads</strong>. We still want <font color="blue">system calls</font>, but we want <font color="blue">procedure calls</font></li>
+</ul>
+<blockquote>
+<p>procedure call is calling code from user space, sys call is asking OS to run in sys mode and do privileged function
+* <em>Not enough fine-grained concurrency</em></p>
+</blockquote>
+<h4 id="user-level-threads">User-Level Threads</h4>
+<p>Details:</p>
+<ul>
+<li>
+<p>User-level threads are managed entirely by run-time system(user-level libraries)</p>
+</li>
+<li>
+<p>Creating a new thread, switching between threads, and synchronizing threads are <font color="blue">done via procedure calls</font> <mark>kernel has no idea or involvement in user-threads. it doesn't know they're happening</mark>. Comparatively, kernel-threads run through system calls which are much slower.</p>
+</li>
+</ul>
+<p>Advantages and disadvantages:</p>
+<ul>
+<li>They are small and fast, up to 100x faster.</li>
+<li>User-level threads are invisibleto the OS so OS can make poor decisions.</li>
+<li>OS can shedule a process with idle threads</li>
+<li>Blocking process whose threads initiated an I/O, even though the process has other threads that can execute</li>
+<li>De-scheduling a process with a thread holding a lock(so no other thread from that process can access critical code region UNTIL OS gives control back to that specific thread</li>
+</ul>
+<p><img alt="" src="../kernel_and_user_threads.png" /></p>
+<h3 id="posix-threads">POSIX Threads</h3>
+<ul>
+<li>
+<p>Standardizes C language threads known as <font color="red">pthreads</font>.</p>
+</li>
+<li>
+<p>Specifies interface, not implementation! Implementation may be kernel-level, user-level, or hybrid.</p>
+</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../l8_system_call/" title="System Call" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                System Call
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../processes/" title="Processes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Processes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

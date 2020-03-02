@@ -1,0 +1,1232 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Semaphores - UofT courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#semaphores" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="UofT courses" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              UofT courses
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Semaphores
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="UofT courses" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UofT courses
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/nicolae-stroncea/notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      CSC309
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        CSC309
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/" title="Communication and Protocols" class="md-nav__link">
+      Communication and Protocols
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/http/" title="The World Wide Web and HTTP" class="md-nav__link">
+      The World Wide Web and HTTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/lec3/" title="Lec3" class="md-nav__link">
+      Lec3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC309/midterm_preparation/" title="Midterm Preparation" class="md-nav__link">
+      Midterm Preparation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      CSC343
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CSC343
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/ddl/" title="Data Definition Language(DDL)" class="md-nav__link">
+      Data Definition Language(DDL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/relational_algebra/" title="Relational Algebra" class="md-nav__link">
+      Relational Algebra
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/schema/" title="Schemas" class="md-nav__link">
+      Schemas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/sql_dml_1/" title="Data Manipulation Language(DML)" class="md-nav__link">
+      Data Manipulation Language(DML)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/sql_dml_2/" title="Outer Joins" class="md-nav__link">
+      Outer Joins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CSC343/subqueries/" title="Subqueries" class="md-nav__link">
+      Subqueries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      CSC369
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        CSC369
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l10_synchronization/" title="Synchronization" class="md-nav__link">
+      Synchronization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l11_locks/" title="Locks" class="md-nav__link">
+      Locks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l12_conditional_variables/" title="Conditional Variables" class="md-nav__link">
+      Conditional Variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Semaphores
+      </label>
+    
+    <a href="./" title="Semaphores" class="md-nav__link md-nav__link--active">
+      Semaphores
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions-of-atomic-operations" class="md-nav__link">
+    Definitions of atomic operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-semaphores" class="md-nav__link">
+    Types of semaphores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atomicity-of-wait-and-signal" class="md-nav__link">
+    Atomicity of wait() and signal()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semaphors-advantages-and-disadvantages" class="md-nav__link">
+    Semaphors Advantages and disadvantages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#producersconsumers-with-semaphors" class="md-nav__link">
+    Producers/Consumers with Semaphors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readerwriter-with-semaphors" class="md-nav__link">
+    Reader/Writer with Semaphors
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l14_deadlocks/" title="Deadlock" class="md-nav__link">
+      Deadlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l2_l3_l4_files/" title="Files and File Systems" class="md-nav__link">
+      Files and File Systems
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l5_disks/" title="Disks I/O" class="md-nav__link">
+      Disks I/O
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l6_reliability/" title="Reliability and Write Optimizations" class="md-nav__link">
+      Reliability and Write Optimizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l7_journaling/" title="File System Reliability" class="md-nav__link">
+      File System Reliability
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l8_system_call/" title="System Call" class="md-nav__link">
+      System Call
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../l9_threads/" title="Processes and Threads" class="md-nav__link">
+      Processes and Threads
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-14" type="checkbox" id="nav-3-14">
+    
+    <label class="md-nav__link" for="nav-3-14">
+      Docs nfs284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-14">
+        Docs nfs284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/notes/" title="File System Considerations" class="md-nav__link">
+      File System Considerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docs_nfs284/processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      NFS284
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        NFS284
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/doing_well/" title="To read" class="md-nav__link">
+      To read
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/food_safety/" title="Week 4: Food Safety" class="md-nav__link">
+      Week 4: Food Safety
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/general_lessons/" title="General Lessons" class="md-nav__link">
+      General Lessons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/midterm_prep/" title="Midterm preparation" class="md-nav__link">
+      Midterm preparation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week5_carbohydrates/" title="Week 5: Carbohydrates" class="md-nav__link">
+      Week 5: Carbohydrates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_nutrition_guidelines/" title="Chapter 2: Nutrition Guidelines" class="md-nav__link">
+      Chapter 2: Nutrition Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_1_readings/" title="Focus on Phytochemicals" class="md-nav__link">
+      Focus on Phytochemicals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_guide/" title="Canada's Food Guide" class="md-nav__link">
+      Canada's Food Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_2_food_labels/" title="Food Labels(PP): *How to read and Understand Food labels*" class="md-nav__link">
+      Food Labels(PP): *How to read and Understand Food labels*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_3_nutrition_research/" title="Week 3: Nutrition Reasearch" class="md-nav__link">
+      Week 3: Nutrition Reasearch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../NFS284/week_4_food_assessment/" title="Week 4: Food Intake Assessment" class="md-nav__link">
+      Week 4: Food Intake Assessment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions-of-atomic-operations" class="md-nav__link">
+    Definitions of atomic operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-semaphores" class="md-nav__link">
+    Types of semaphores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atomicity-of-wait-and-signal" class="md-nav__link">
+    Atomicity of wait() and signal()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semaphors-advantages-and-disadvantages" class="md-nav__link">
+    Semaphors Advantages and disadvantages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#producersconsumers-with-semaphors" class="md-nav__link">
+    Producers/Consumers with Semaphors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readerwriter-with-semaphors" class="md-nav__link">
+    Reader/Writer with Semaphors
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/nicolae-stroncea/notes/tree/master/docs/CSC369/l13_semaphores.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="semaphores">Semaphores</h1>
+<p>Abstract data types that provide synchronization. <mark>Semaphore is an alternative to locks.</mark></p>
+<p><span style="background-color:lime">A semaphore is an integer counting variable that has 2 atomic operations: wait and signal</span></p>
+<p>Semaphores include:</p>
+<ul>
+<li>
+<p>Integer counter variable(semaphore value), that <u>can only be accessed through 2 atomic operations</u>. <mark>Semaphore value represents number of threads that can pass through wait before it blocks</mark></p>
+</li>
+<li>
+<p>Atomic operation <font color="pink">wait</font>(also called P or decrement).</p>
+</li>
+</ul>
+<p><font color="salmon"><u>Blocks while semaphore counter &lt;= 0</u> and then decremenets counter</font></p>
+<ul>
+<li>Atomic operation <font color="pink">signal</font>(also called V or increment)</li>
+</ul>
+<p><font color="salmon"><u>Increment the counter</u>, unblock a waiting thread if there are any.</font></p>
+<h2 id="definitions-of-atomic-operations">Definitions of atomic operations</h2>
+<blockquote>
+<p>these are definitions not implementations</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">sem</span><span class="p">){</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">sem</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// keeps executing as long as sem &lt;= 0.</span>
+    <span class="n">sem</span> <span class="o">--</span> <span class="c1">// sem here is 0+, and its decremented.</span>
+<span class="p">}</span>
+
+<span class="n">signal</span><span class="p">(</span><span class="n">sem</span><span class="p">){</span>
+    <span class="n">sem</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="types-of-semaphores">Types of semaphores</h2>
+<ul>
+<li>
+<p>Binary(Mutex) Semaphore is the most common: <code class="codehilite"><span class="k">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span></code></p>
+</li>
+<li>
+<p>Allow <strong>only 1 thread into CS</strong></p>
+</li>
+<li>
+<p><strong>Mutual exclusion</strong> to critical section</p>
+</li>
+<li>
+<p>Counting semaphore(<u>max</u> n  threads allowed in CS, where <code class="codehilite"><span class="k">count</span> <span class="o">=</span> <span class="n">n</span></code>)</p>
+</li>
+<li>
+<p>Great for a resource which allows <u>certain kinds of <strong>unsynchronized</strong> concurrent access</u>(e.g reading)</p>
+</li>
+</ul>
+<h2 id="atomicity-of-wait-and-signal">Atomicity of wait() and signal()</h2>
+<ul>
+<li>
+<p><code class="codehilite"><span class="k">wait</span><span class="ss">()</span></code> and <code class="codehilite"><span class="n">signal</span><span class="p">()</span></code> are atomic, meaning that they execute in one go, i.e they will not be interrupted whilst executed.</p>
+</li>
+<li>
+<p>To implement them, can use:</p>
+</li>
+<li>
+<p>lower-level primitives</p>
+</li>
+<li>
+<p><em>uniprocessor</em>: disable interrupts or use  hardware instructions</p>
+</li>
+<li>
+<p><em>multiprocessor</em>: use hardware instructions</p>
+</li>
+</ul>
+<h2 id="example">Example</h2>
+<div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">account</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">balance</span><span class="p">;</span>
+    <span class="n">semaphore</span> <span class="n">S</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">account_t</span><span class="p">;</span>
+
+<span class="n">Withdraw</span><span class="p">(</span><span class="n">account_t</span> <span class="o">*</span><span class="n">acct</span><span class="p">,</span> <span class="n">amt</span><span class="p">){</span>
+    <span class="kt">double</span> <span class="n">bal</span><span class="p">;</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">acct</span><span class="o">-&gt;</span><span class="n">S</span><span class="p">);</span>
+    <span class="n">bal</span> <span class="o">=</span> <span class="n">acct</span><span class="o">-&gt;</span><span class="n">balance</span><span class="p">;</span>
+    <span class="n">bal</span> <span class="o">=</span> <span class="n">bal</span> <span class="o">-</span> <span class="n">amt</span><span class="p">;</span>
+    <span class="n">acct</span><span class="o">-&gt;</span><span class="n">balance</span> <span class="o">=</span> <span class="n">bal</span><span class="p">;</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">acct</span><span class="o">-&gt;</span><span class="n">S</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">bal</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<blockquote>
+<p>Note: note that we're returning bal instead of acct-&gt;balance. This is because we <font color="red">should never touch shared variables outside of a critical section, even for reading, because <strong>they might have already been changed</strong></font>. Instead return the local variable bal, which you know gives accurate result.</p>
+</blockquote>
+<h2 id="semaphors-advantages-and-disadvantages">Semaphors Advantages and disadvantages</h2>
+<ul>
+<li>
+<p><em>Advantage</em>: A semaphor's value can be modified by any thread. In comparison, a lock has an "owner" and <u>can be released only by its owner. </p>
+</li>
+<li>
+<p><em>Advantage</em>: Semaphor can impose an order of behaviour between threads. That's not possible with locks.</p>
+</li>
+</ul>
+<p><img alt="" src="../semaphor_orders.png" /></p>
+<blockquote>
+<p><span style="background-color:lime">If you want to impose order of a first then b, make code <code class="codehilite"><span class="k">wait</span></code> before b on a semaphore that increases ONLY AFTER a is passed.</span></p>
+</blockquote>
+<ul>
+<li><em>Disadvantage</em>: Has a conditional variable which is very basic(<code class="codehilite"><span class="k">if</span> <span class="nv">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="nv">sleep</span></code>). We may want a more complex wait condition.</li>
+</ul>
+<h2 id="producersconsumers-with-semaphors">Producers/Consumers with Semaphors</h2>
+<div class="codehilite"><pre><span></span><span class="c1">//globals</span>
+<span class="c1">// mutex for writing/reading from bugger</span>
+<span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">// semaphor for how many pieces you can read</span>
+<span class="n">reads_allowed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">// semaphor for how many pieces can be written at the same time</span>
+<span class="n">writes_allowed</span> <span class="o">=</span> <span class="n">N</span>
+
+<span class="n">Producer</span> <span class="p">{</span>
+    <span class="c1">// allow to write only if there is space(i.e if writes_allowed &gt; 0)</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">writes_allowed</span><span class="p">)</span>
+
+    <span class="c1">// lock buffer</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+    <span class="n">add_to_buffer</span><span class="p">()</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+
+    <span class="c1">// send to Consumer message that it&#39;s ready to consume +1 piece</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">reads_allowed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">Consumer</span><span class="p">{</span>
+
+    <span class="c1">// only allow reads if they are possible(there are</span>
+    <span class="c1">// pieces ready to be consumed)   </span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">reads_allowed</span><span class="p">)</span>
+
+    <span class="c1">// lock the buffer</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+    <span class="n">read_from_buffer</span><span class="p">()</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+
+    <span class="c1">// allow +1 write</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">writes_allowed</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="readerwriter-with-semaphors">Reader/Writer with Semaphors</h2>
+<p><a href="https://en.wikipedia.org/wiki/Readers%E2%80%93writers_problem">from Wikipedia</a>: Suppose we have a shared memory area (critical section). It is possible to protect the shared data behind a mutual exclusion <a href="https://en.wikipedia.org/wiki/Mutex" title="Mutex">mutex</a>, in which case no two threads can access the data at the same time, specifically we don't want a writer and reader accessing it at the same time, or 2 writers, but we're ok with 2 readers accessing it. Reader <em>R2</em> should be allowed to read the resource alongside <em>R1</em> because reads don't modify data, so <strong>concurrent reads are safe</strong>. This is the motivation for the <strong>first readers-writers problem</strong>, in which the constraint is added that <em>no reader shall be kept waiting if the share is currently opened for reading.</em> This is also called <strong>readers-preference</strong>, with its solution:</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Globals</span>
+<span class="kt">int</span> <span class="n">readcount</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// number of readers</span>
+<span class="n">semaphore</span> <span class="n">resource</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">Writer</span> <span class="p">{</span>
+    <span class="c1">// can&#39;t read and write to data at the same time</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">resource</span><span class="p">);</span>
+    <span class="n">write</span><span class="p">();</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">resource</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Reader</span> <span class="p">{</span>
+    <span class="c1">// remember that readcount is a shared variable, therefore multiple variables may be able to modify it at the same time</span>
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+    <span class="n">reacount</span> <span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">readcount</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span> <span class="c1">//only need to lock it once, and lock it the first time a reader accesses it</span>
+        <span class="n">sem_wait</span><span class="p">(</span><span class="n">resource</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+
+    <span class="n">read</span><span class="p">;</span>
+
+    <span class="n">sem_wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+    <span class="n">readcount</span> <span class="o">-=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">readcount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span><span class="c1">// once the last reader inside has finished reading, then you can release the lock and a write or another read can grab it.</span>
+        <span class="n">sem_signal</span><span class="p">(</span><span class="n">read_or_write</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">sem_signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+
+<p><font color="red">TODO</font>: Read <a href="https://en.wikipedia.org/wiki/Readers%E2%80%93writers_problem#Third_readers-writers_problem">Complete Reader/Writer</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../l12_conditional_variables/" title="Conditional Variables" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Conditional Variables
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../l14_deadlocks/" title="Deadlock" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Deadlock
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
