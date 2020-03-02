@@ -132,7 +132,7 @@ it. But, disabling interrupts, is a major undertaking.
    
    1. Basic, <u>easy to understand</u>
    
-   2. Good for some race conditions where <u>you can set the order</u> in which threads will execute
+   2. Good for some race conditions where <u>you can set the order</u> in which threads will execute. **race condition**: condition where multiple threads access Critical Section and both try to <u>update</u> a shared veriable. *Note* that reading is not considered updating since it doesn't change the value.
    
    3. Not always the right abstraction
 

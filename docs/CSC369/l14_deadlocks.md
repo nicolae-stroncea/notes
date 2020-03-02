@@ -76,6 +76,8 @@ In conclusion, it's a bad idea to try and break any of the first 3 conditions of
 
 !!! example
     process A has lock # 2, and it can only request locks with a higher number.
+    you have function `request_friend(a,b)`, where it locks 1st arg and then 2nd arg. If you call request_friend(a,b) and request_friend(b,a), then you will get a deadlock, as Thread 1 will lock a and then wait fo b. and Thread 2 will lock b and then wait for a
+
 
 !!! note
     other strategies for dealing with Deadlocks are: **deadlock avoidance**(use knowledge about resources that each process might request, **deadlock detection**, and **deadlock recovery**
@@ -96,4 +98,3 @@ Most OS nowadays employ "ostrich algorithm": ignore problem, hope it doesn't hap
 
 * **problem**: Deadlocks that happen when A sends request to B, and waits for reply, B waits for the message, and the *message gets lost*, then both are waiting.
 * **solution**: use timeouts, use protocol to detect that message is lost and resend it.
-
